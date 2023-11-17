@@ -1,45 +1,51 @@
-<img src="https://www.royvoetman.nl/images/packages/laravel-gitlab.svg" width="100%">
+A Gitea Storage driver for Laravel
 
-A Gitlab Storage driver for Laravel
-
-[![Latest Version](https://img.shields.io/packagist/v/royvoetman/laravel-gitlab-storage.svg?style=flat-square)](https://packagist.org/packages/royvoetman/laravel-gitlab-storage)
+[![Latest Version](https://img.shields.io/packagist/v/infernalmedia/laravel-gitea-storage.svg?style=flat-square)](https://packagist.org/packages/infernalmedia/laravel-gitea-storage)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Total Downloads](https://img.shields.io/packagist/dt/royvoetman/laravel-gitlab-storage.svg?style=flat-square)](https://packagist.org/packages/royvoetman/laravel-gitlab-storage)
+[![Total Downloads](https://img.shields.io/packagist/dt/infernalmedia/laravel-gitea-storage.svg?style=flat-square)](https://packagist.org/packages/infernalmedia/laravel-gitea-storage)
 
-This package is a wrapper bridging [Flysystem-Gitlab-storage](https://github.com/RoyVoetman/Flysystem-Gitlab-storage) into Laravel as an available storage disk.
+This package is a wrapper bridging [Flysystem-Gitea-storage](https://github.com/infernalmedia/flysystem-gitea-storage) into Laravel as an available storage disk.
+
+This is a fork from the dashing [RoyVoetman/laravel-gitlab-storage](https://github.com/RoyVoetman/laravel-gitlab-storage) package which has been adapted to work with Gitea's API.
 
 ## Installation
 
 ```bash
-composer require royvoetman/laravel-gitlab-storage
+composer require infernalmedia/laravel-gitea-storage
 ```
 
 Add a new disk to your filesystems.php config
 
 ```php
-'gitlab' => [
-    'driver'                => 'gitlab',
-    'personal-access-token' => env('GITLAB_ACCESS_TOKEN', ''), // Personal access token
-    'project-id'            => env('GITLAB_PROJECT_ID'), // Project id of your repo
-    'branch'                => env('GITLAB_BRANCH', 'master'), // Branch that should be used
-    'base-url'              => env('GITLAB_BASE_URL', 'https://gitlab.com'), // Base URL of Gitlab server you want to use
+'gitea' => [
+    'driver'                => 'gitea',
+    'personal-access-token' => env('GITEA_ACCESS_TOKEN', ''), // Personal access token
+    'username'              => env('GITEA_USERNAME'),
+    'repository'            => env('GITEA_REPOSITORY'), // your repo
+    'branch'                => env('GITEA_BRANCH', 'main'), // Branch that should be used
+    'base-url'              => env('GITEA_BASE_URL', 'https://gitea.com'), // Base URL of Gitea server you want to use
 ],
 ```
 
 ### Access token (required for private projects)
-Gitlab supports server side API authentication with Personal Access tokens
+Gitea supports server side API authentication with Personal Access tokens
 
-For more information on how to create your own Personal Access token: [Gitlab Docs](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+Personal Access Token can be created from the Settings page of your user account.
 
-### Project ID
-Every project in Gitlab has its own Project ID. It can be found at to top of the frontpage of your repository. [See](https://stackoverflow.com/questions/39559689/where-do-i-find-the-project-id-for-the-gitlab-api#answer-53126068)
+### Username
+
+This is the username or the organization name under which repositories are stored.
+
+### Repository
+
+Name of the repository.
 
 ### Base URL
-This will be the URL where you host your gitlab server (e.g. https://gitlab.com)
+This will be the URL where you host your gitea server (e.g. https://gitea.com)
 
 ## Usage
 ```php
-$disk = Storage::disk('gitlab');
+$disk = Storage::disk('gitea');
 
 // create a file
 $disk->put('images/', $fileContents);
@@ -62,7 +68,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Contributing
 
-Contributions are **welcome** and will be fully **credited**. We accept contributions via Pull Requests on [Github](https://github.com/RoyVoetman/laravel-gitlab-storage).
+Contributions are **welcome** and will be fully **credited**. We accept contributions via Pull Requests on [Github](https://github.com/infernalmedia/laravel-gitea-storage).
 
 ### Pull Requests
 

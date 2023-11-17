@@ -1,11 +1,17 @@
 {
-    "name": "royvoetman/laravel-gitlab-storage",
-    "description": "A Gitlab Storage driver for Laravel",
+    "name": "infernalmedia/laravel-gitea-storage",
+    "description": "A Gitea Storage driver for Laravel",
     "license": "MIT",
+    "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/infernalmedia/flysystem-gitea-storage.git"
+        }
+      ],
     "authors": [
         {
-            "name": "Roy Voetman",
-            "email": "royvoetman@outlook.com",
+            "name": "Jean Lalande",
+            "email": "jean.lalande@infernal.media",
             "role": "Developer"
         }
     ],
@@ -13,17 +19,17 @@
         "php": "^7.0 || ^8.0",
         "illuminate/support": "^9.0|^10.0",
         "illuminate/filesystem": "^9.0|^10.0",
-        "royvoetman/flysystem-gitlab-storage": "^3.0"
+        "infernalmedia/flysystem-gitea-storage": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "RoyVoetman\\LaravelGitlabStorage\\": "src/"
+            "InfernalMedia\\LaravelGiteaStorage\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "RoyVoetman\\LaravelGitlabStorage\\GitlabStorageServiceProvider"
+                "InfernalMedia\\LaravelGiteaStorage\\GiteaStorageServiceProvider"
             ]
         }
     }
