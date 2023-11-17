@@ -2,12 +2,6 @@
     "name": "infernalmedia/laravel-gitea-storage",
     "description": "A Gitea Storage driver for Laravel",
     "license": "MIT",
-    "repositories": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/infernalmedia/flysystem-gitea-storage.git"
-        }
-      ],
     "authors": [
         {
             "name": "Jean Lalande",
@@ -19,7 +13,7 @@
         "php": "^7.0 || ^8.0",
         "illuminate/support": "^9.0|^10.0",
         "illuminate/filesystem": "^9.0|^10.0",
-        "infernalmedia/flysystem-gitea-storage": "dev-master"
+        "infernalmedia/flysystem-gitea-storage": "^0.0.1"
     },
     "autoload": {
         "psr-4": {
